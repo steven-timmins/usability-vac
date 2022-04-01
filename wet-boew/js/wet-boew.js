@@ -9826,7 +9826,7 @@ var componentName = "wb-menu",
 			$elm = $elements.eq( i );
 			$subMenu = $elm.siblings( "ul" );
 
-			$elm.parent().attr( {
+			$elm.attr( {
 				"aria-posinset": ( i + 1 ),
 				"aria-setsize": length,
 				role: "menuitem"
@@ -9860,8 +9860,8 @@ var componentName = "wb-menu",
 			posinset = "' aria-posinset='",
 			menuitem = " role='menuitem' aria-setsize='",
 			sectionHtml = "<li><details>" + "<summary class='mb-item" +
-				( $section.hasClass( "wb-navcurr" ) || $section.children( ".wb-navcurr" ).length !== 0 ? " wb-navcurr'" : "'" ) /*+
-				menuitem*/ + sectionsLength + /*posinset*/ + ( sectionIndex + 1 ) +
+				( $section.hasClass( "wb-navcurr" ) || $section.children( ".wb-navcurr" ).length !== 0 ? " wb-navcurr'" : "'" ) +
+				/*menuitem*/ + sectionsLength + /*posinset*/ + ( sectionIndex + 1 ) +
 				"' aria-haspopup='true'>" + $section.html() + "</summary>" +
 				"<ul class='list-unstyled mb-sm' role='menu' aria-expanded='false' aria-hidden='true'>";
 
