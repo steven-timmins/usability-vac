@@ -2868,7 +2868,7 @@ select[multiple].input-sm,
   height: 46px;
   padding: 10px 16px;
   font-size: 18px;
-  line-height: 1.3333333;
+  line-height: 1.7;
   border-radius: 6px; }
 
 select.input-lg, .input-group-lg > select.form-control,
