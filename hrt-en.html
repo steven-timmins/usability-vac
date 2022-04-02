@@ -16,14 +16,6 @@
 
 	<noscript>
 		<link rel="stylesheet" href="wet-boew/css/noscript.min.css"></noscript>
-
-	<style>
-
-
-
-	</style>
-
-
 </head>
 
 <body vocab="http://schema.org/" resource="#wb-webpage" typeof="WebPage">
@@ -131,7 +123,7 @@
 							<meta property="position" content="1">
 						</li>
 						<li property="itemListElement" typeof="ListItem">
-							<a property="item" typeof="WebPage" href="index-en.html"><span property="name">Forms</span></a>
+							<a property="item" typeof="WebPage" href="#.html"><span property="name">Forms</span></a>
 							<meta property="position" content="2">
 						</li>
 						<li property="itemListElement" typeof="ListItem"><span property="name">Health-related travel expenses form</span>
@@ -147,7 +139,7 @@
 	</header>
 	<main role="main" property="mainContentOfPage" resource="#wb-main" class="container">
 		<h1 id="wb-cont" property="name">Health-related travel expenses form</h1>
-		<form role="form" method="get" action="#" class="">
+		<form method="get" action="#" class="">
 			<h2>Before you begin</h2>
 			<h2>Travel details and expenses</h2>
 			<h3>Travel date and times</h3>
@@ -157,14 +149,14 @@
 				</legend>
 
 				<div class="form-group col-xs-6 col-md-3">
-					<label for="startdate" class="col-xs-12">Departure date <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-					<input class="form-control full-width mrgn-rght-md" type="date" id="startdate" name="startdate" min="" max="" />
+					<label for="deptDate" class="col-xs-12">Departure date <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
+					<input class="form-control full-width mrgn-rght-md" type="date" id="deptDate" name="deptDate" min="" max="" />
 				</div>
 				<div class="form-group col-xs-6 col-md-3">
-					<label for="timepicker2">Departure time <span class="datepicker-format"> (<abbr title="24-hour clock, 2 digits for hours, 2 digits for minutes">HH-MM</abbr>)</span></label>
+					<label for="deptTime">Departure time <span class="datepicker-format"> (<abbr title="24-hour clock, 2 digits for hours, 2 digits for minutes">HH-MM</abbr>)</span></label>
 
 					<div class="input-group bootstrap-timepicker timepicker col-md-8">
-						<input id="timepicker2" type="text" class="form-control input-lg">
+						<input id="deptTime" type="text" class="form-control input-lg">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 					</div>
 
@@ -176,14 +168,14 @@
 				</legend>
 
 				<div class="form-group col-xs-6 col-md-3">
-					<label for="startdate" class="col-xs-12">Return date <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-					<input class="form-control full-width mrgn-rght-md" type="date" id="startdate" name="startdate" min="" max="" />
+					<label for="returnDate" class="col-xs-12">Return date <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
+					<input class="form-control full-width mrgn-rght-md" type="date" id="returnDate" name="returnDate" min="" max="" />
 				</div>
 				<div class="form-group col-xs-6 col-md-3">
-					<label for="timepicker2">Return time <span class="datepicker-format"> (<abbr title="24-hour clock, 2 digits for hours, 2 digits for minutes">HH-MM</abbr>)</span></label>
+					<label for="returnTime">Return time <span class="datepicker-format"> (<abbr title="24-hour clock, 2 digits for hours, 2 digits for minutes">HH-MM</abbr>)</span></label>
 
 					<div class="input-group bootstrap-timepicker timepicker col-md-8">
-						<input id="timepicker2" type="text" class="form-control input-lg">
+						<input id="returnTime" type="text" class="form-control input-lg">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 					</div>
 
@@ -230,16 +222,16 @@
 
 				<div id="air-travel" class="col-md-12 mrgn-bttm-md">
 					<div class="checkbox col-md-3 input-lg">
-						<label for="air-travel-checkbox" class="control-label full-width">
-							<input id="air-travel-checkbox" type="checkbox" value="">
-							<span class="bold">Air travel</span>
+						<label for="airtravelcheckbox" class="control-label full-width">
+							<input id="airtravelcheckbox" type="checkbox">
+							<span class="field-name">Air travel</span>
 						</label>
 					</div>
-					<div class="col-md-4" id="air-travel-value">
-						<label for="air-travel-value" class="wb-inv">Air travel expense (dollars and cents)</label>
+					<div class="col-md-4" id="airtravelexpense">
+						<label for="airtravelVal" class="wb-inv">Air travel expense (dollars and cents)</label>
 						<div class="input-group col-md-6">
 							<span class="input-group-addon">$</span>
-							<input id="air-travel-val" type="number" class="form-control input-lg">
+							<input id="airtravelVal" type="text" placeholder="0.00" class="form-control input-lg finance-input">
 						</div>
 					</div>
 				</div>
@@ -250,11 +242,11 @@
 							<span class="bold">Bus</span>
 						</label>
 					</div>
-					<div class="col-md-4" id="bus-value">
+					<div class="col-md-4" id="bus-expense">
 						<label for="bus-value" class="wb-inv">Bus expense (dollars and cents)</label>
 						<div class="input-group col-md-6">
 							<span class="input-group-addon">$</span>
-							<input id="bus-val" type="number" class="form-control input-lg">
+							<input id="bus-value" type="text" placeholder="0.00" class="form-control input-lg finance-input">
 						</div>
 					</div>
 				</div>
@@ -265,11 +257,11 @@
 							<span class="bold">Car rental (including fuel)</span>
 						</label>
 					</div>
-					<div class="col-md-4" id="car-rental-value">
+					<div class="col-md-4" id="car-rental-expense">
 						<label for="car-rental-value" class="wb-inv">Car rental expense, including fuel (dollars and cents)</label>
 						<div class="input-group col-md-6">
 							<span class="input-group-addon">$</span>
-							<input id="car-rental-val" type="number" class="form-control input-lg">
+							<input id="car-rental-value" type="text" placeholder="0.00" class="form-control input-lg finance-input">
 						</div>
 					</div>
 				</div>
@@ -280,11 +272,11 @@
 							<span class="bold">Ferry</span>
 						</label>
 					</div>
-					<div class="col-md-4" id="ferry-value">
+					<div class="col-md-4" id="ferry-expense">
 						<label for="ferry-value" class="wb-inv">Ferry expense (dollars and cents)</label>
 						<div class="input-group col-md-6">
 							<span class="input-group-addon">$</span>
-							<input id="ferry-val" type="number" class="form-control input-lg">
+							<input id="ferry-value" placeholder="0.00" class="form-control input-lg finance-input">
 						</div>
 					</div>
 				</div>
@@ -295,11 +287,11 @@
 							<span class="bold">Parking</span>
 						</label>
 					</div>
-					<div class="col-md-4" id="parking-value">
+					<div class="col-md-4" id="parking-expense">
 						<label for="parking-value" class="wb-inv">Parking expense (dollars and cents)</label>
 						<div class="input-group col-md-6">
 							<span class="input-group-addon">$</span>
-							<input id="parking-val" type="number" class="form-control input-lg">
+							<input id="parking-value" placeholder="0.00" class="form-control input-lg finance-input">
 						</div>
 					</div>
 				</div>
@@ -310,11 +302,11 @@
 							<span class="bold">Private Motor Vehicle</span>
 						</label>
 					</div>
-					<div class="col-md-4" id="private-motor-vehicle-value">
+					<div class="col-md-4" id="private-motor-vehicle-expense">
 						<label for="private-motor-vehicle-value" class="wb-inv">Round-trip distance in kms</label>
 						<div class="input-group col-sm-12">
 							<span class="input-group-addon">Round-trip distance</span>
-							<input id="private-motor-vehicle-val" type="number" min="1" max="9999" step="1" class="form-control input-lg">
+							<input id="private-motor-vehicle-value" type="number" min="1" max="9999" step="10" class="form-control input-lg">
 							<span class="input-group-addon">kms</span>
 						</div>
 					</div>
@@ -326,11 +318,11 @@
 							<span class="bold">Taxi</span>
 						</label>
 					</div>
-					<div class="col-md-4" id="taxi-value">
+					<div class="col-md-4" id="taxi-expense">
 						<label for="taxi-value" class="wb-inv">Taxi expense (dollars and cents)</label>
 						<div class="input-group col-md-6">
 							<span class="input-group-addon">$</span>
-							<input id="taxi-val" type="number" class="form-control input-lg">
+							<input id="taxi-value" type="text" placeholder="0.00" class="form-control input-lg finance-input">
 						</div>
 					</div>
 				</div>
@@ -341,11 +333,11 @@
 							<span class="bold">Toll</span>
 						</label>
 					</div>
-					<div class="col-md-4" id="toll-value">
+					<div class="col-md-4" id="toll-expense">
 						<label for="toll-value" class="wb-inv">Toll expense (dollars and cents)</label>
 						<div class="input-group col-md-6">
 							<span class="input-group-addon">$</span>
-							<input id="toll-val" type="number" class="form-control input-lg">
+							<input id="toll-value" type="text" placeholder="0.00" class="form-control input-lg finance-input">
 						</div>
 					</div>
 				</div>
@@ -356,11 +348,11 @@
 							<span class="bold">Train</span>
 						</label>
 					</div>
-					<div class="col-md-4" id="train-value">
+					<div class="col-md-4" id="train-expense">
 						<label for="train-value" class="wb-inv">Train expense (dollars and cents)</label>
 						<div class="input-group col-md-6">
 							<span class="input-group-addon">$</span>
-							<input id="train-val" type="number" class="form-control input-lg">
+							<input id="train-value" type="text" placeholder="0.00" class="form-control input-lg finance-input">
 						</div>
 					</div>
 				</div>
@@ -371,11 +363,11 @@
 							<span class="bold">Other</span>
 						</label>
 					</div>
-					<div class="col-md-4" id="other-value">
+					<div class="col-md-4" id="other-expense">
 						<label for="other-value" class="wb-inv">Other expense (dollars and cents)</label>
 						<div class="input-group col-md-6">
 							<span class="input-group-addon">$</span>
-							<input id="other-val" type="number" class="form-control input-lg">
+							<input id="other-value" type="text" placeholder="0.00" class="form-control input-lg finance-input">
 						</div>
 					</div>
 				</div>
@@ -411,8 +403,8 @@
 					<h4>Dependant care expenses</h4>
 				</legend>
 				<div class="form-group col-xs-6 col-md-6">
-					<label for="meal" class="col-xs-12 mrgn-tp-sm h4">Would you like to claim dependant care expenses?</label>
-					<select class="form-control mrgn-rght-md" id="meal">
+					<label for="dependant-care" class="col-xs-12 mrgn-tp-sm h4">Would you like to claim dependant care expenses?</label>
+					<select class="form-control mrgn-rght-md" id="dependant-care">
 						<option value="no">No</option>
 						<option value="yes">Yes</option>
 					</select>
@@ -423,8 +415,8 @@
 					<h4>Escort expenses</h4>
 				</legend>
 				<div class="form-group col-xs-6 col-md-6">
-					<label for="meal" class="col-xs-12 mrgn-tp-sm h4">Would you like to claim escort expenses?</label>
-					<select class="form-control mrgn-rght-md" id="meal">
+					<label for="escort" class="col-xs-12 mrgn-tp-sm h4">Would you like to claim escort expenses?</label>
+					<select class="form-control mrgn-rght-md" id="escort">
 						<option value="no">No</option>
 						<option value="yes">Yes</option>
 					</select>
@@ -459,8 +451,8 @@
 				</legend>
 				
 				<div class="form-group">
-					<label for="condition">Name</label>
-					<input type="text" class="form-control">
+					<label for="hp-name">Name</label>
+					<input id="hp-name" type="text" class="form-control">
 				</div>
 			</fieldset>
 			<fieldset>
@@ -468,12 +460,12 @@
 					<h5 class="h4">Heath-care professional office address</h5>
 				</legend>
 				<div class="form-group">
-					<label for="condition">Street Address</label>
-					<input type="text" class="form-control">
+					<label for="hp-street">Street Address</label>
+					<input id="hp-street" type="text" class="form-control">
 				</div>
 				<div class="form-group">
-					<label for="condition">City</label>
-					<input type="text" class="form-control">
+					<label for="hp-city">City</label>
+					<input id="hp-city" type="text" class="form-control">
 				</div>
 			</fieldset>
 			<fieldset>
@@ -482,18 +474,23 @@
 			</legend>
 				<div class="form-group">
 					<label for="condition">What medical condition was the appointment for?</label>
-					<input type="text" class="form-control">
+					<input id="condition" type="text" class="form-control" list="conditions">
+					<datalist id="conditions">
+						<option value="Hearing loss / tinnitus">
+						<option value="Post-traumatic stress disorder">
+						<option value="Psychologist visit">
+					  </datalist>
 				</div>
 			</fieldset>
 
 			<h2>Supporting documents</h2>
 			<fieldset>
 				<legend>
-					<h4>Retain documents for 12 months, or submit them now</h4>
+					<h3>Retain documents for 12 months, or submit them now</h3>
 				</legend>
 				<div class="form-group col-xs-6 col-md-6">
-					<label for="lodging" class="col-xs-12 mrgn-tp-sm">Would you like to submit your supporting documents at this time?</label>
-					<select class="form-control mrgn-rght-md" id="lodging">
+					<label for="documents" class="col-xs-12 mrgn-tp-sm">Would you like to submit your supporting documents at this time?</label>
+					<select class="form-control mrgn-rght-md" id="documents">
 						<option value="no">No</option>
 						<option value="yes">Yes</option>
 					</select>
@@ -515,7 +512,8 @@
 	<script src="wet-boew/js/wet-boew.js"></script>
 	<script src="wet-boew/js/bootstrap-timepicker.min.js"></script>
 	<script type="text/javascript">
-		$('#timepicker1,#timepicker2').timepicker(
+		// time picker
+		$('#deptTime, #returnTime, #apptTime').timepicker(
 			{ showMeridian: false }
 		);
 		// dollars and cent decimal mask
@@ -527,6 +525,15 @@
 			const data = Object.fromEntries(new FormData(e.target).entries());
 			console.log(data);
 		});
+
+		$( "form" ).validate({
+			rules: {
+				airtravelVal: {
+				required: true,
+				number: true
+				}
+			}
+			});
 
 	</script>
 </body>
