@@ -138,415 +138,691 @@
 
 	</header>
 	<main role="main" property="mainContentOfPage" resource="#wb-main" class="container">
+		<div class="wb-frmvld">
+			<form method="get" action="#" class="mva-gwf hidden" id="hrt_1">
+				<h2>Before you begin</h2>
+				<h2>Travel details and expenses</h2>
+				<h3>Travel date and times</h3>
+				<fieldset>
+					<legend class="h4">
+						When did you depart from home?
+					</legend>
+
+					<div class="form-group col-xs-6 col-md-3">
+						<label for="deptDate" class="col-xs-12">Departure date <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
+						<input class="form-control full-width mrgn-rght-md" type="date" id="deptDate" name="deptDate" min="" max=""
+						 required />
+					</div>
+					<div class="form-group col-xs-6 col-md-3">
+						<label class="required" for="deptTime">Departure time <span class="datepicker-format"> (<abbr title="24-hour clock, 2 digits for hours, 2 digits for minutes">HH-MM</abbr>)</span></label>
+
+						<div class="input-group bootstrap-timepicker timepicker col-md-8">
+							<input id="deptTime" type="time" class="form-control input-lg" data-rule-required="true">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+						</div>
+
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend class="h4">
+						When did you return home?
+					</legend>
+
+					<div class="form-group col-xs-6 col-md-3">
+						<label for="returnDate" class="col-xs-12">Return date <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
+						<input class="form-control full-width mrgn-rght-md" type="date" id="returnDate" name="returnDate" min="" max=""
+						 required />
+					</div>
+					<div class="form-group col-xs-6 col-md-3">
+						<label for="returnTime">Return time <span class="datepicker-format"> (<abbr title="24-hour clock, 2 digits for hours, 2 digits for minutes">HH-MM</abbr>)</span></label>
+
+						<div class="input-group bootstrap-timepicker timepicker col-md-8">
+							<input id="returnTime" type="time" class="form-control input-lg" data-rule-required="true">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+						</div>
+
+					</div>
+				</fieldset>
+				<h3>Number of appointments</h3>
+				<fieldset>
+					<legend class="wb-inv">
+						Number of appointments
+					</legend>
+					<div class="form-group col-xs-6 col-md-12">
+						<label for="multi-appointment required" class="h4">
+							Did you attend more than one appointment? <strong class="required"> (required)</strong>
+						</label>
+
+						<select class="form-control mrgn-rght-md input-lg required h6" id="multi-appointment" data-rule-required="true">
+							<option value="No">No</option>
+							<option value="Yes">Yes</option>
+						</select>
+
+					</div>
+					<div class="form-group col-xs-6 col-md-12">
+						<label for="multi-appointment-value" class="h4 col-sm-12">
+							How many appointments did you attend? <strong class="required"> (required)</strong>
+						</label>
+						<div class="col-sm-2 col-md-1">
+							<input id="multi-appointment-value" type="number" class="form-control input-lg " value="2" min="2" max=""
+							 data-rule-required="true" disabled>
+
+						</div>
+
+
+
+					</div>
+				</fieldset>
+
+				<h3>Travel expenses</h3>
+
+				<fieldset id="transportation-expenses">
+					<legend>
+						<h4>Transportation expenses</h4>
+						<small>
+							<p class="small">Select the transportation costs you would like to claim.</p>
+						</small>
+					</legend>
+
+					<div id="air-travel" class="col-md-12 mrgn-bttm-md">
+						<div class="checkbox col-md-3 input-lg">
+							<label for="airtravelcheckbox" class="control-label full-width">
+								<input id="airtravelcheckbox" type="checkbox">
+								<span class="field-name">Air travel</span>
+							</label>
+						</div>
+						<div class="col-md-4" id="airtravelexpense">
+							<label for="airtravelVal" class="wb-inv">Air travel expense (dollars and cents)</label>
+							<div class="input-group col-md-6">
+								<span class="input-group-addon">$</span>
+								<input id="airtravelVal" type="text" placeholder="0.00" class="form-control input-lg finance-input" disabled>
+							</div>
+						</div>
+					</div>
+					<div id="bus" class="col-md-12 mrgn-bttm-md">
+						<div class="checkbox col-md-3 input-lg">
+							<label for="bus-checkbox" class="control-label full-width">
+								<input id="bus-checkbox" type="checkbox" value="">
+								<span class="bold">Bus</span>
+							</label>
+						</div>
+						<div class="col-md-4" id="bus-expense">
+							<label for="bus-value" class="wb-inv">Bus expense (dollars and cents)</label>
+							<div class="input-group col-md-6">
+								<span class="input-group-addon">$</span>
+								<input id="bus-value" type="text" placeholder="0.00" class="form-control input-lg finance-input" disabled>
+							</div>
+						</div>
+					</div>
+					<div id="car-rental" class="col-md-12 mrgn-bttm-md">
+						<div class="checkbox col-md-3 input-lg">
+							<label for="car-rental-checkbox" class="control-label full-width">
+								<input id="car-rental-checkbox" type="checkbox" value="">
+								<span class="bold">Car rental (including fuel)</span>
+							</label>
+						</div>
+						<div class="col-md-4" id="car-rental-expense">
+							<label for="car-rental-value" class="wb-inv">Car rental expense, including fuel (dollars and cents)</label>
+							<div class="input-group col-md-6">
+								<span class="input-group-addon">$</span>
+								<input id="car-rental-value" type="text" placeholder="0.00" class="form-control input-lg finance-input"
+								 disabled>
+							</div>
+						</div>
+					</div>
+					<div id="ferry" class="col-md-12 mrgn-bttm-md">
+						<div class="checkbox col-md-3 input-lg">
+							<label for="ferry-checkbox" class="control-label full-width">
+								<input id="ferry-checkbox" type="checkbox" value="">
+								<span class="bold">Ferry</span>
+							</label>
+						</div>
+						<div class="col-md-4" id="ferry-expense">
+							<label for="ferry-value" class="wb-inv">Ferry expense (dollars and cents)</label>
+							<div class="input-group col-md-6">
+								<span class="input-group-addon">$</span>
+								<input id="ferry-value" placeholder="0.00" class="form-control input-lg finance-input" disabled>
+							</div>
+						</div>
+					</div>
+					<div id="parking" class="col-md-12 mrgn-bttm-md">
+						<div class="checkbox col-md-3 input-lg">
+							<label for="parking-checkbox" class="control-label full-width">
+								<input id="parking-checkbox" type="checkbox" value="">
+								<span class="bold">Parking</span>
+							</label>
+						</div>
+						<div class="col-md-4" id="parking-expense">
+							<label for="parking-value" class="wb-inv">Parking expense (dollars and cents)</label>
+							<div class="input-group col-md-6">
+								<span class="input-group-addon">$</span>
+								<input id="parking-value" placeholder="0.00" class="form-control input-lg finance-input" disabled>
+							</div>
+						</div>
+					</div>
+					<div id="private-motor-vehicle" class="col-md-12 mrgn-bttm-md">
+						<div class="checkbox col-md-3 input-lg">
+							<label for="private-motor-vehicle-checkbox" class="control-label full-width">
+								<input id="private-motor-vehicle-checkbox" type="checkbox" value="">
+								<span class="bold">Private Motor Vehicle</span>
+							</label>
+						</div>
+						<div class="col-md-4" id="private-motor-vehicle-expense">
+							<label for="private-motor-vehicle-value" class="wb-inv">Round-trip distance in kms</label>
+							<div class="input-group col-sm-12">
+								<span class="input-group-addon">Round-trip distance</span>
+								<input id="private-motor-vehicle-value" type="number" min="1" max="9999" step="10" class="form-control input-lg"
+								 disabled>
+								<span class="input-group-addon">kms</span>
+							</div>
+						</div>
+					</div>
+					<div id="taxi" class="col-md-12 mrgn-bttm-md">
+						<div class="checkbox col-md-3 input-lg">
+							<label for="taxi-checkbox" class="control-label full-width">
+								<input id="taxi-checkbox" type="checkbox" value="">
+								<span class="bold">Taxi</span>
+							</label>
+						</div>
+						<div class="col-md-4" id="taxi-expense">
+							<label for="taxi-value" class="wb-inv">Taxi expense (dollars and cents)</label>
+							<div class="input-group col-md-6">
+								<span class="input-group-addon">$</span>
+								<input id="taxi-value" type="text" placeholder="0.00" class="form-control input-lg finance-input" disabled>
+							</div>
+						</div>
+					</div>
+					<div id="toll" class="col-md-12 mrgn-bttm-md">
+						<div class="checkbox col-md-3 input-lg">
+							<label for="toll-checkbox" class="control-label full-width">
+								<input id="toll-checkbox" type="checkbox" value="">
+								<span class="bold">Toll</span>
+							</label>
+						</div>
+						<div class="col-md-4" id="toll-expense">
+							<label for="toll-value" class="wb-inv">Toll expense (dollars and cents)</label>
+							<div class="input-group col-md-6">
+								<span class="input-group-addon">$</span>
+								<input id="toll-value" type="text" placeholder="0.00" class="form-control input-lg finance-input" disabled>
+							</div>
+						</div>
+					</div>
+					<div id="train" class="col-md-12 mrgn-bttm-md">
+						<div class="checkbox col-md-3 input-lg">
+							<label for="train-checkbox" class="control-label full-width">
+								<input id="train-checkbox" type="checkbox" value="">
+								<span class="bold">Train</span>
+							</label>
+						</div>
+						<div class="col-md-4" id="train-expense">
+							<label for="train-value" class="wb-inv">Train expense (dollars and cents)</label>
+							<div class="input-group col-md-6">
+								<span class="input-group-addon">$</span>
+								<input id="train-value" type="text" placeholder="0.00" class="form-control input-lg finance-input" disabled>
+							</div>
+						</div>
+					</div>
+					<div id="other" class="col-md-12 mrgn-bttm-md">
+						<div class="checkbox col-md-3 input-lg">
+							<label for="other-checkbox" class="control-label full-width">
+								<input id="other-checkbox" type="checkbox" value="">
+								<span class="bold">Other</span>
+							</label>
+						</div>
+						<div class="col-md-4" id="other-expense">
+							<label for="other-value" class="wb-inv">Other expense (dollars and cents)</label>
+							<div class="input-group col-md-6">
+								<span class="input-group-addon">$</span>
+								<input id="other-value" type="text" placeholder="0.00" class="form-control input-lg finance-input" disabled>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+
+				<fieldset>
+					<legend>
+						<h4>Lodging expenses</h4>
+					</legend>
+					<div class="form-group col-xs-6 col-md-6">
+						<label for="lodging" class="col-xs-12 mrgn-tp-sm h4">Would you like to claim lodging expenses?</label>
+						<select class="form-control mrgn-rght-md" id="lodging" data-rule-required="true">
+							<option value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>
+						<h4>Meal expenses</h4>
+					</legend>
+					<div class="form-group col-xs-6 col-md-6">
+						<label for="meal" class="col-xs-12 mrgn-tp-sm h4">Would you like to claim meal expenses?</label>
+						<select class="form-control mrgn-rght-md" id="meal" data-rule-required="true">
+							<option value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>
+						<h4>Dependant care expenses</h4>
+					</legend>
+					<div class="form-group col-xs-6 col-md-6">
+						<label for="dependant-care" class="col-xs-12 mrgn-tp-sm h4">Would you like to claim dependant care expenses?</label>
+						<select class="form-control mrgn-rght-md" id="dependant-care" data-rule-required="true">
+							<option value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>
+						<h4>Escort expenses</h4>
+					</legend>
+					<div class="form-group col-xs-6 col-md-6">
+						<label for="escort" class="col-xs-12 mrgn-tp-sm h4">Would you like to claim escort expenses?</label>
+						<select class="form-control mrgn-rght-md" id="escort" data-rule-required="true">
+							<option value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+				</fieldset>
+
+				<h2>Appointment information</h2>
+				<h3>Appointment 1</h3>
+				<fieldset>
+					<legend>
+						<h4>When did your appointment begin?</h4>
+					</legend>
+
+
+					<div class="form-group col-xs-6 col-md-3">
+						<label for="apptDate" class="col-xs-12">Appointment date <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
+						<input class="form-control full-width mrgn-rght-md" type="date" id="apptDate" name="apptDate" min="" max=""
+						 required />
+					</div>
+					<div class="form-group col-xs-6 col-md-3">
+						<label for="timepicker2">Appointment time <span class="datepicker-format"> (<abbr title="24-hour clock, 2 digits for hours, 2 digits for minutes">HH:MM</abbr>)</span></label>
+
+						<div class="input-group bootstrap-timepicker timepicker col-md-8">
+							<input id="timepicker2" type="text" class="form-control input-lg" data-rule-required="true">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+						</div>
+
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>
+						<h4>Heath-care professional</h4>
+					</legend>
+
+					<div class="form-group">
+						<label for="hp-name">Name</label>
+						<input id="hp-name" type="text" class="form-control" data-rule-required="true">
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>
+						<h5 class="h4">Heath-care professional office address</h5>
+					</legend>
+					<div class="form-group">
+						<label for="hp-street">Street Address</label>
+						<input id="hp-street" type="text" class="form-control" data-rule-required="true">
+					</div>
+					<div class="form-group">
+						<label for="hp-city">City</label>
+						<input id="hp-city" type="text" class="form-control" data-rule-required="true">
+					</div>
+					<div class="form-group">
+						<label for="hp-province">Province/territory</label>
+						<input id="hp-province" type="text" class="form-control" data-rule-required="true">
+					</div>
+					<div class="form-group">
+						<label for="hp-pcodeca" class="required"><span class="field-name">Postal code</span> <strong class="required">(required)</strong></label>
+						<input class="form-control" id="hp-pcodeca" name="hp-pcodeca" type="text" autocomplete="postal-code" size="7"
+						 maxlength="7" data-rule-required="true" data-rule-postalCodeCA="true" />
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>
+						<h4>Medical condition</h4>
+					</legend>
+					<div class="form-group">
+						<label for="condition">What medical condition was the appointment for?</label>
+						<input id="condition" type="text" class="form-control" list="conditions" data-rule-required="true">
+						<datalist id="conditions">
+							<option value="Hearing loss / tinnitus">
+							<option value="Post-traumatic stress disorder">
+							<option value="Psychologist visit">
+						</datalist>
+					</div>
+				</fieldset>
+
+				<h2>Supporting documents</h2>
+				<fieldset>
+					<legend>
+						<h3>Retain documents for 12 months, or submit them now</h3>
+					</legend>
+					<div class="form-group col-xs-6 col-md-6">
+						<label for="documents" class="col-xs-12 mrgn-tp-sm">Would you like to submit your supporting documents at this
+							time?</label>
+						<select class="form-control mrgn-rght-md" id="documents" data-rule-required="true">
+							<option value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+				</fieldset>
+
+				<h2>Preview</h2>
+
+				<button type="button" class="btn btn-default" id="preview-btn">Preview</button>
+
+				<h2>Submit</h2>
+
+				<h3>Privacy notice</h3>
+				<div class="form-group">
+					<div class="checkbox checkbox-standalone required">
+						<label for="agree1"><input id="agree1" name="agree1" type="checkbox" data-rule-required="true"> <span class="field-name">I
+								agree</span>
+							<strong class="required">(required)</strong></label>
+					</div>
+					<button type="submit" class="btn btn-success">Submit</button>
+			</form>
+		</div>
+
 		<h1 id="wb-cont" property="name">Health-related travel expenses form</h1>
-		<form method="get" action="#" class="mva-gwf" id="hrt">
-			<h2>Before you begin</h2>
-			<h2>Travel details and expenses</h2>
-			<h3>Travel date and times</h3>
-			<fieldset>
-				<legend class="h4">
-					When did you depart from home?
-				</legend>
 
-				<div class="form-group col-xs-6 col-md-3">
-					<label for="deptDate" class="col-xs-12">Departure date <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-					<input class="form-control full-width mrgn-rght-md" type="date" id="deptDate" name="deptDate" min="" max="" required/>
-				</div>
-				<div class="form-group col-xs-6 col-md-3">
-					<label for="deptTime">Departure time <span class="datepicker-format"> (<abbr title="24-hour clock, 2 digits for hours, 2 digits for minutes">HH-MM</abbr>)</span></label>
+		<h2>Before you begin</h2>
 
-					<div class="input-group bootstrap-timepicker timepicker col-md-8">
-						<input id="deptTime" type="text" class="form-control input-lg" required>
-						<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+		<div class="wb-frmvld provisional wb-steps col-md-6 form-inline">
+			<form action="#" method="get" id="hrt">
+
+				<fieldset>
+					<legend>Travel details
+					</legend>
+					<div>
+
+						<section class="col-md-12 mrgn-bttm-xl">
+							<h4 class="col-md-12 control-label text-info">When did you depart home?</h4>
+							<div class="form-group col-md-6">
+								<label for="dept-date" class="required"><span class="field-name">Departure date</span><span class="datepicker-format">
+										(<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>) </span><strong
+									 class="required"> (required)</strong>
+								</label>
+								<input class="form-control" id="dept-date" name="dept-date" type="date" data-rule-dateiso="true"
+								 data-rule-required="true">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="dept-time" class="required"><span class="field-name">Departure time <span class="datepicker-format"><abbr
+											 title="24-hour format, two digits hour, semicolon, two digits minutes">(HH:mm)</abbr></span> </span>
+									<strong class="required"> (required)</strong>
+								</label>
+								<div class="input-group col-xs-8 col-sm-5 col-md-8 timepicker bootstrap-timepicker">
+									<input class="form-control input-lg" type="text" placeholder="13:00" id="dept-time" data-rule-required="true">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+								</div>
+
+
+							</div>
+						</section>
+
+						<section class="col-md-12 mrgn-bttm-xl">
+							<h4 class="col-md-12 control-label text-info">When did you return home?</h4>
+							<div class="form-group col-md-6">
+								<label for="return-date" class="required"><span class="field-name">Return date</span><span class="datepicker-format">
+										(<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>) </span><strong
+									 class="required"> (required)</strong>
+								</label>
+								<input class="form-control" id="return-date" name="return-date" type="date" data-rule-dateiso="true"
+								 data-rule-required="true">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="return-time" class="required"><span class="field-name">Return time <span class="datepicker-format"><abbr
+											 title="24-hour format, two digits hour, semicolon, two digits minutes">(HH:mm)</abbr></span></span>
+									<strong class="required"> (required)</strong>
+								</label>
+								<div class="input-group col-xs-8 col-sm-5 col-md-8 timepicker bootstrap-timepicker">
+									<input class="form-control input-lg" type="text" placeholder="13:00" id="return-time" name="return-time"
+									 data-rule-required="true">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+								</div>
+						</section>
+
+						<section class="col-md-12 mrgn-bttm-xl">
+							<div class="form-group">
+								<h4 class="col-md-12 control-label text-info"><label for="morethanoneappt"><span class="field-name">Did you attend more than one appointment?</span></label></h4>
+								
+								<div class="col-xs-6">
+									<select name="morethanoneappt" id="morethanoneappt" style='width:100%;' class="form-control input-lg formSectionParent">
+										<option value="No">No</option>
+										<option value="Yes">Yes</option>
+									</select>
+									<!--
+								<div class="chkbxrdio-grp radio-inline">
+										<label for="multi-appointment-no" class="col-sm-6"><input type="radio" name="multi-appointment" value="No" id="multi-appointment-no" data-rule-required="true" checked/>
+											No</label>
+										<label for="multi-appointment-yes" class="col-sm-6"><input type="radio" name="multi-appointment" value="Yes" id="multi-appointment-yes" class="revealNext" />Yes</label>
+								</div>-->
+								</div>
+							</div>
+							<div class="form-group hidden">
+								<div class="clearfix"></div>
+								<h4 class="col-md-12 control-label text-info">How many appointments did you attend?</h4>
+
+									<div class="col-sm-12">
+									<label for="appt-quantity" class="required"><span class="field-name">Number of appointments</span> <strong
+												class="required"> (required)</strong></label>
+									<input class="form-control input-lg" id="appt-quantity" name="appt-quantity" type="number" min="2" max="99" step="1"
+									 data-rule-required="true">
+									</div>
+								</div>
+						</section>
+
+
+
+
+
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<legend class="mrgn-tp-lg">Expenses
+					</legend>
+					<div class="col-md-12">
+						<div id="errors-hrt alert alert-danger hidden"></div>
+
+						<p class="h4">Transportation expenses</p>
+						<section class="row">
+							<div class="form-group col-md-12">
+								<label for="transportation-expenses"><span class="field-name h4">Would you like to claim transportation
+										expenses?</span>
+								</label>
+								<select name="transportation-expenses" id="transportation-expenses" class="form-control input-lg">
+									<option value="No">No</option>
+									<option value="Yes" selected>Yes</option>
+								</select>
+							</div>
+						</section>
+						<section class="row">
+							<section class="col-md-6" id="parking">
+								<section class="col-md-6 form-group mrgn-tp-sm">
+									<div class="checkbox pull-right">
+										<label for="parking-check" class="right">
+											<input id="parking-check" class="formSectionParent" type="checkbox" value="">
+											<strong>Parking</strong> </label>
+									</div>
+								</section>
+								<section class="col-md-6 form-group mrgn-tp-sm hidden" id="parking-expense">
+									<label for="parking-value" class="wb-inv"><span class="field-name">Parking expense</span></label>
+									<div class="input-group">
+										<span class="input-group-addon">$</span>
+										<input id="parking-value" type="text" placeholder="0.00" min="0" step="5" class="form-control input-lg finance-input"
+										 data-rule-required="true">
+									</div>
+								</section>
+							</section>
+						</section>
+
 					</div>
 
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend class="h4">
-					When did you return home?
-				</legend>
+				</fieldset>
 
-				<div class="form-group col-xs-6 col-md-3">
-					<label for="returnDate" class="col-xs-12">Return date <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-					<input class="form-control full-width mrgn-rght-md" type="date" id="returnDate" name="returnDate" min="" max="" required/>
-				</div>
-				<div class="form-group col-xs-6 col-md-3">
-					<label for="returnTime">Return time <span class="datepicker-format"> (<abbr title="24-hour clock, 2 digits for hours, 2 digits for minutes">HH-MM</abbr>)</span></label>
-
-					<div class="input-group bootstrap-timepicker timepicker col-md-8">
-						<input id="returnTime" type="text" class="form-control input-lg" required>
-						<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+				<fieldset>
+					<legend class="mrgn-tp-lg">
+						Health professional details
+					</legend>
+					<div>
+						<section class="col-md-12">
+							<p class="h4">What is your health professional's address?</p>
+							<div class="form-group">
+								<label for="pcodeca" class="required"><span class="field-name">Postal code</span> <strong class="required">(required)</strong></label>
+								<input class="form-control" id="pcodeca" name="pcodeca" type="text" autocomplete="postal-code" size="7"
+								 maxlength="7" data-rule-required="true" data-rule-postalCodeCA="true" />
+							</div>
+						</section>
 					</div>
-
-				</div>
-			</fieldset>
-			<h3>Number of appointments</h3>
-			<fieldset>
-				<legend class="wb-inv">
-					Number of appointments
-				</legend>
-				<div class="form-group col-xs-6 col-md-12">
-					<label for="multi-appointment" class="h4">
-						Did you attend more than one appointment?
-					</label>
-
-					<select class="form-control mrgn-rght-md input-lg" id="multi-appointment" required>
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</div>
-				<div class="form-group col-xs-6 col-md-12">
-					<label for="multi-appointment-value" class="h4 col-sm-12">
-						How many appointments did you attend?
-					</label>
-					<div class="col-sm-2 col-md-1">
-							<input id="multi-appointment-value" type="number" class="form-control input-lg " value="2" min="2" max="" disabled>
-
-					</div>
-
+				</fieldset>
+				<fieldset>
+					<legend class="mrgn-tp-lg">
+						Appointment details
+					</legend>
+					<div>
+						<p class="h4">When did your appointment begin?</p>
+						<div class="form-group col-md-5">
+							<label for="appt-date" class="required"><span class="field-name">Appointment date</span><span class="datepicker-format">
+									(<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>) </span><strong
+								 class="required"> (required)</strong>
+							</label>
+							<input class="form-control" id="appt-date" name="appt-date" type="date" data-rule-dateiso="true"
+							 data-rule-required="true">
+						</div>
+						<div class="form-group col-md-5">
+							<label for="appt-time" class="required"><span class="field-name">Appointment time <span class="datepicker-format"><abbr
+										 title="24-hour format, two digits hour, semicolon, two digits minutes">(HH:mm)</abbr></span></span>
+								<strong class="required"> (required)</strong>
+							</label>
+							<div class="input-group col-md-6 timepicker bootstrap-timepicker">
+								<input class="form-control input-lg" type="text" placeholder="13:00" id="appt-time" name="appt-time"
+								 data-rule-required="true">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+							</div>
 
 
-				</div>
-			</fieldset>
-
-			<h3>Travel expenses</h3>
-
-			<fieldset id="transportation-expenses">
-				<legend>
-					<h4>Transportation expenses</h4>
-					<small>
-						<p class="small">Select the transportation costs you would like to claim.</p>
-					</small>
-				</legend>
-
-				<div id="air-travel" class="col-md-12 mrgn-bttm-md">
-					<div class="checkbox col-md-3 input-lg">
-						<label for="airtravelcheckbox" class="control-label full-width">
-							<input id="airtravelcheckbox" type="checkbox">
-							<span class="field-name">Air travel</span>
-						</label>
-					</div>
-					<div class="col-md-4" id="airtravelexpense">
-						<label for="airtravelVal" class="wb-inv">Air travel expense (dollars and cents)</label>
-						<div class="input-group col-md-6">
-							<span class="input-group-addon">$</span>
-							<input id="airtravelVal" type="text" placeholder="0.00" class="form-control input-lg finance-input" disabled>
 						</div>
 					</div>
-				</div>
-				<div id="bus" class="col-md-12 mrgn-bttm-md">
-					<div class="checkbox col-md-3 input-lg">
-						<label for="bus-checkbox" class="control-label full-width">
-							<input id="bus-checkbox" type="checkbox" value="">
-							<span class="bold">Bus</span>
-						</label>
-					</div>
-					<div class="col-md-4" id="bus-expense">
-						<label for="bus-value" class="wb-inv">Bus expense (dollars and cents)</label>
-						<div class="input-group col-md-6">
-							<span class="input-group-addon">$</span>
-							<input id="bus-value" type="text" placeholder="0.00" class="form-control input-lg finance-input" disabled>
+				</fieldset>
+
+
+				<fieldset>
+					<legend class="mrgn-tp-lg">Lodging expenses
+					</legend>
+					<section class="col-md-12">
+						<div class="form-group col-md-12">
+							<label for="lodging-expenses"><span class="field-name h4">Would you like to claim meal expenses?</span>
+							</label>
+							<select name="lodging-expenses" id="lodging-expenses" class="form-control input-lg">
+								<option value="No">No</option>
+								<option value="Yes">Yes</option>
+							</select>
 						</div>
-					</div>
-				</div>
-				<div id="car-rental" class="col-md-12 mrgn-bttm-md">
-					<div class="checkbox col-md-3 input-lg">
-						<label for="car-rental-checkbox" class="control-label full-width">
-							<input id="car-rental-checkbox" type="checkbox" value="">
-							<span class="bold">Car rental (including fuel)</span>
-						</label>
-					</div>
-					<div class="col-md-4" id="car-rental-expense">
-						<label for="car-rental-value" class="wb-inv">Car rental expense, including fuel (dollars and cents)</label>
-						<div class="input-group col-md-6">
-							<span class="input-group-addon">$</span>
-							<input id="car-rental-value" type="text" placeholder="0.00" class="form-control input-lg finance-input" disabled>
+
+					</section>
+				</fieldset>
+				<fieldset>
+					<legend class="mrgn-tp-lg">Meal expenses
+					</legend>
+					<section class="col-md-12">
+						<div class="form-group col-md-12">
+							<label for="meal-expenses"><span class="field-name h4">Would you like to claim meal expenses?</span>
+							</label>
+							<select name="meal-expenses" id="meal-expenses" class="form-control input-lg">
+								<option value="No">No</option>
+								<option value="Yes">Yes</option>
+							</select>
 						</div>
-					</div>
-				</div>
-				<div id="ferry" class="col-md-12 mrgn-bttm-md">
-					<div class="checkbox col-md-3 input-lg">
-						<label for="ferry-checkbox" class="control-label full-width">
-							<input id="ferry-checkbox" type="checkbox" value="">
-							<span class="bold">Ferry</span>
-						</label>
-					</div>
-					<div class="col-md-4" id="ferry-expense">
-						<label for="ferry-value" class="wb-inv">Ferry expense (dollars and cents)</label>
-						<div class="input-group col-md-6">
-							<span class="input-group-addon">$</span>
-							<input id="ferry-value" placeholder="0.00" class="form-control input-lg finance-input" disabled>
+
+					</section>
+				</fieldset>
+				<fieldset>
+					<legend class="mrgn-tp-lg">Dependant care expenses
+					</legend>
+					<section class="col-md-12">
+						<div class="form-group col-md-12">
+							<label for="dependantcare-expenses"><span class="field-name h4">Would you like to claim dependant care expenses?</span>
+							</label>
+							<select name="dependantcare-expenses" id="dependantcare-expenses" class="form-control input-lg">
+								<option value="No">No</option>
+								<option value="Yes">Yes</option>
+							</select>
 						</div>
-					</div>
-				</div>
-				<div id="parking" class="col-md-12 mrgn-bttm-md">
-					<div class="checkbox col-md-3 input-lg">
-						<label for="parking-checkbox" class="control-label full-width">
-							<input id="parking-checkbox" type="checkbox" value="">
-							<span class="bold">Parking</span>
-						</label>
-					</div>
-					<div class="col-md-4" id="parking-expense">
-						<label for="parking-value" class="wb-inv">Parking expense (dollars and cents)</label>
-						<div class="input-group col-md-6">
-							<span class="input-group-addon">$</span>
-							<input id="parking-value" placeholder="0.00" class="form-control input-lg finance-input" disabled>
+
+					</section>
+				</fieldset>
+				<fieldset>
+					<legend class="mrgn-tp-lg">Escort expenses
+					</legend>
+					<section class="col-md-12">
+						<div class="form-group col-md-12">
+							<label for="escort-expenses"><span class="field-name h4">Would you like to claim escort expenses?</span>
+							</label>
+							<select name="escort-expenses" id="escort-expenses" class="form-control input-lg">
+								<option value="No">No</option>
+								<option value="Yes">Yes</option>
+							</select>
 						</div>
-					</div>
-				</div>
-				<div id="private-motor-vehicle" class="col-md-12 mrgn-bttm-md">
-					<div class="checkbox col-md-3 input-lg">
-						<label for="private-motor-vehicle-checkbox" class="control-label full-width">
-							<input id="private-motor-vehicle-checkbox" type="checkbox" value="">
-							<span class="bold">Private Motor Vehicle</span>
-						</label>
-					</div>
-					<div class="col-md-4" id="private-motor-vehicle-expense">
-						<label for="private-motor-vehicle-value" class="wb-inv">Round-trip distance in kms</label>
-						<div class="input-group col-sm-12">
-							<span class="input-group-addon">Round-trip distance</span>
-							<input id="private-motor-vehicle-value" type="number" min="1" max="9999" step="10" class="form-control input-lg" disabled>
-							<span class="input-group-addon">kms</span>
-						</div>
-					</div>
-				</div>
-				<div id="taxi" class="col-md-12 mrgn-bttm-md">
-					<div class="checkbox col-md-3 input-lg">
-						<label for="taxi-checkbox" class="control-label full-width">
-							<input id="taxi-checkbox" type="checkbox" value="">
-							<span class="bold">Taxi</span>
-						</label>
-					</div>
-					<div class="col-md-4" id="taxi-expense">
-						<label for="taxi-value" class="wb-inv">Taxi expense (dollars and cents)</label>
-						<div class="input-group col-md-6">
-							<span class="input-group-addon">$</span>
-							<input id="taxi-value" type="text" placeholder="0.00" class="form-control input-lg finance-input" disabled>
-						</div>
-					</div>
-				</div>
-				<div id="toll" class="col-md-12 mrgn-bttm-md">
-					<div class="checkbox col-md-3 input-lg">
-						<label for="toll-checkbox" class="control-label full-width">
-							<input id="toll-checkbox" type="checkbox" value="">
-							<span class="bold">Toll</span>
-						</label>
-					</div>
-					<div class="col-md-4" id="toll-expense">
-						<label for="toll-value" class="wb-inv">Toll expense (dollars and cents)</label>
-						<div class="input-group col-md-6">
-							<span class="input-group-addon">$</span>
-							<input id="toll-value" type="text" placeholder="0.00" class="form-control input-lg finance-input" disabled>
-						</div>
-					</div>
-				</div>
-				<div id="train" class="col-md-12 mrgn-bttm-md">
-					<div class="checkbox col-md-3 input-lg">
-						<label for="train-checkbox" class="control-label full-width">
-							<input id="train-checkbox" type="checkbox" value="">
-							<span class="bold">Train</span>
-						</label>
-					</div>
-					<div class="col-md-4" id="train-expense">
-						<label for="train-value" class="wb-inv">Train expense (dollars and cents)</label>
-						<div class="input-group col-md-6">
-							<span class="input-group-addon">$</span>
-							<input id="train-value" type="text" placeholder="0.00" class="form-control input-lg finance-input" disabled>
-						</div>
-					</div>
-				</div>
-				<div id="other" class="col-md-12 mrgn-bttm-md">
-					<div class="checkbox col-md-3 input-lg">
-						<label for="other-checkbox" class="control-label full-width">
-							<input id="other-checkbox" type="checkbox" value="">
-							<span class="bold">Other</span>
-						</label>
-					</div>
-					<div class="col-md-4" id="other-expense">
-						<label for="other-value" class="wb-inv">Other expense (dollars and cents)</label>
-						<div class="input-group col-md-6">
-							<span class="input-group-addon">$</span>
-							<input id="other-value" type="text" placeholder="0.00" class="form-control input-lg finance-input" disabled>
-						</div>
-					</div>
-				</div>
 
-			</fieldset>
+					</section>
+				</fieldset>
+				<!--
+				<section id="errors-hrt"></section>-->
 
-			<fieldset>
-				<legend>
-					<h4>Lodging expenses</h4>
-				</legend>
-				<div class="form-group col-xs-6 col-md-6">
-					<label for="lodging" class="col-xs-12 mrgn-tp-sm h4">Would you like to claim lodging expenses?</label>
-					<select class="form-control mrgn-rght-md" id="lodging" required>
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend>
-					<h4>Meal expenses</h4>
-				</legend>
-				<div class="form-group col-xs-6 col-md-6">
-					<label for="meal" class="col-xs-12 mrgn-tp-sm h4">Would you like to claim meal expenses?</label>
-					<select class="form-control mrgn-rght-md" id="meal" required>
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend>
-					<h4>Dependant care expenses</h4>
-				</legend>
-				<div class="form-group col-xs-6 col-md-6">
-					<label for="dependant-care" class="col-xs-12 mrgn-tp-sm h4">Would you like to claim dependant care expenses?</label>
-					<select class="form-control mrgn-rght-md" id="dependant-care" required>
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend>
-					<h4>Escort expenses</h4>
-				</legend>
-				<div class="form-group col-xs-6 col-md-6">
-					<label for="escort" class="col-xs-12 mrgn-tp-sm h4">Would you like to claim escort expenses?</label>
-					<select class="form-control mrgn-rght-md" id="escort" required>
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</div>
-			</fieldset>
+				<button type="button" id="review-btn" class="btn btn-default full-width">Review</button>
 
-			<h2>Appointment information</h2>
-			<h3>Appointment 1</h3>
-			<fieldset>
-				<legend>
-					<h4>When did your appointment begin?</h4>
-				</legend>
-
-
-				<div class="form-group col-xs-6 col-md-3">
-					<label for="apptDate" class="col-xs-12">Appointment date <span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
-					<input class="form-control full-width mrgn-rght-md" type="date" id="apptDate" name="apptDate" min="" max="" required/>
-				</div>
-				<div class="form-group col-xs-6 col-md-3">
-					<label for="timepicker2">Appointment time <span class="datepicker-format"> (<abbr title="24-hour clock, 2 digits for hours, 2 digits for minutes">HH:MM</abbr>)</span></label>
-
-					<div class="input-group bootstrap-timepicker timepicker col-md-8">
-						<input id="timepicker2" type="text" class="form-control input-lg" required>
-						<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-					</div>
-
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend>
-					<h4>Heath-care professional</h4>
-				</legend>
-				
-				<div class="form-group">
-					<label for="hp-name">Name</label>
-					<input id="hp-name" type="text" class="form-control" required>
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend>
-					<h5 class="h4">Heath-care professional office address</h5>
-				</legend>
-				<div class="form-group">
-					<label for="hp-street">Street Address</label>
-					<input id="hp-street" type="text" class="form-control" required>
-				</div>
-				<div class="form-group">
-					<label for="hp-city">City</label>
-					<input id="hp-city" type="text" class="form-control" required>
-				</div>
-				<div class="form-group">
-					<label for="hp-province">Province/territory</label>
-					<input id="hp-province" type="text" class="form-control" required>
-				</div>
-				<div class="form-group">
-					<label for="hp-postal-code">Postal code</label>
-					<input id="hp-postal-code" type="text" class="form-control" required>
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend>
-				<h4>Medical condition</h4>
-			</legend>
-				<div class="form-group">
-					<label for="condition">What medical condition was the appointment for?</label>
-					<input id="condition" type="text" class="form-control" list="conditions" required>
-					<datalist id="conditions">
-						<option value="Hearing loss / tinnitus">
-						<option value="Post-traumatic stress disorder">
-						<option value="Psychologist visit">
-					  </datalist>
-				</div>
-			</fieldset>
-
-			<h2>Supporting documents</h2>
-			<fieldset>
-				<legend>
-					<h3>Retain documents for 12 months, or submit them now</h3>
-				</legend>
-				<div class="form-group col-xs-6 col-md-6">
-					<label for="documents" class="col-xs-12 mrgn-tp-sm">Would you like to submit your supporting documents at this time?</label>
-					<select class="form-control mrgn-rght-md" id="documents" required>
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</div>
-			</fieldset>
-
-			<h2>Preview</h2>
-
-			<button type="button" class="btn btn-default" id="preview-btn">Preview</button>
-
-			<h2>Submit</h2>
-			
-			<h3>Privacy notice</h3>
-			<div class="form-group">
-				<div class="checkbox checkbox-standalone required">
-					<label for="agree1"><input id="agree1" name="agree1" type="checkbox" required> <span class="field-name">I agree</span> <strong class="required">(required)</strong></label>
-				</div>
-			<button type="submit" class="btn btn-success">Submit</button>
-		</form>
+				<input type="submit" value="Submit" class="btn btn-primary">
+				<input type="reset" value="Reset page to defaults" class="btn btn-link btn-sm show p-0 mrgn-tp-md">
+			</form>
 
 	</main>
+
+
 	<script src="wet-boew/js/jquery/2.2.4/jquery.min.js"></script>
-	<script src="wet-boew/js/wet-boew.js"></script>
-	<script src="wet-boew/js/deps/jquery.validate.min.js"></script>
 	<script src="wet-boew/js/bootstrap-timepicker.min.js"></script>
+	<script src="wet-boew/js/deps/jquery.validate.min.js"></script>
+	<script src="wet-boew/js/wet-boew.js"></script>
+
+
+
 	<script type="text/javascript">
-		// time picker
-		$('#deptTime, #returnTime, #apptTime').timepicker(
-			{ defaultTime: false, showMeridian: false }
-		);
-		// dollars and cent decimal mask
-		$(document).on('input', '.finance-input', function (event) {
-			this.value = parseFloat(this.value.replace(/(.*){1}/, '0$1').replace(/[^\d]/g, '').replace(/(\d\d?)$/, '.$1')).toFixed(2);
+
+		$(document).ready(function () {
+
+			$("#review-btn").click(function () {
+				//console.log('review');
+				$('#hrt').valid();
+			});
+
+
+			// time picker
+			$('#dept-time, #return-time, #appt-time').timepicker({
+				defaultTime: false,
+				showMeridian: false,
+				minuteStep: 15
+			});
+
+
+			// dollars and cent decimal mask
+			$(document).on('input', '.finance-input', function (event) {
+				this.value = parseFloat(this.value.replace(/(.*){1}/, '0$1').replace(/[^\d]/g, '').replace(/(\d\d?)$/, '.$1')).toFixed(2);
+			});
+
+
+			//reveal
+			$(document).on('change', '.formSectionParent', function () {
+				$(this).parents('.form-group').next().toggleClass('hidden');
+			});
+
 		});
-
-		$('#preview-btn').on('click', (e) => {	
-			e.preventDefault();
-			$('.mva-gwf input, .mva-gwf select').each(
-				function(index){  
-					var input = $(this);
-					var label = $('label[for="' + input.attr('id') + '"]');
-					console.log( 'Label: ' + label.text() + ' Value: ' + input.val() + 'ID: ' + input.attr('id') + ' Type: ' + input.attr('type'));
-				}
-			);
-
-		})
-
-		$("#hrt").validate();
 
 
 	</script>

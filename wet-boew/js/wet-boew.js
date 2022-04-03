@@ -8903,7 +8903,7 @@ wb.add( selector );
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author @pjackson28
  */
-( function( $, window, document, wb ) {
+( function ( $, window, document, wb ) {
 "use strict";
 
 /*
@@ -8975,11 +8975,12 @@ var componentName = "wb-frmvld",
 					return ( $.validator && $.validator.methods.bic );
 				},
 				complete: function() {
+					
 					var $elm = $( "#" + elmId ),
 						$form = $elm.find( "form" ),
 						formDOM = $form.get( 0 ),
 						formId = $form.attr( "id" ),
-						labels = formDOM.getElementsByTagName( "label" ),
+						labels = $(formDOM).find("label"), 	// getElementsByTagName.("label") wasn't working
 						submitted = false,
 						errorFormId = "errors-" + ( !formId ? "default" : formId ),
 						settings = $.extend(
@@ -8991,7 +8992,7 @@ var componentName = "wb-frmvld",
 						),
 						summaryHeading = settings.hdLvl,
 						i, len, validator;
-
+							
 					// Append the aria-live region (for provide message updates to screen readers)
 					$elm.append( "<div class='arialive wb-inv' aria-live='polite' aria-relevant='all'></div>" );
 
@@ -9003,6 +9004,7 @@ var componentName = "wb-frmvld",
 
 					// The jQuery validation plug-in in action
 					validator = $form.validate( {
+						
 						meta: "validate",
 						focusInvalid: false,
 						ignore: settings.ignore,
@@ -9097,14 +9099,14 @@ var componentName = "wb-frmvld",
 										$errors.length !== 1 ?
 											i18nText.errorsFound :
 											i18nText.errorFound
-									) + "</" + summaryHeading + "><ul>";
+									) + "</" + summaryHeading + "><ol>";
 								$errorfields
 									.closest( ".form-group" )
 									.addClass( "has-error" );
 								len = $errors.length;
 								for ( i = 0; i !== len; i += 1 ) {
 									$error = $errors.eq( i );
-									prefix = prefixStart + ( i + 1 ) + prefixEnd;
+									prefix = '<span class="wb-inv">' + prefixStart + ( i + 1 ) + prefixEnd + '</span>';
 									$fieldName = $error.closest( "label" ).find( ".field-name" );
 
 									// Try to find the field name in the legend (if one exists)
@@ -9145,7 +9147,7 @@ var componentName = "wb-frmvld",
 										$error.html( "<span class='label label-danger'>" + prefix + $error.text() + "</span>" );
 									}
 								}
-								summary += "</ul>";
+								summary += "</ol>";
 
 								if ( !submitted ) {
 
@@ -9213,9 +9215,11 @@ var componentName = "wb-frmvld",
 					} ); /* end of validate() */
 
 					/* fixes validation issue (see PR #7913) */
-					$form.on( "change", "input[type=date], input[type=file], select", function() {
+					/* added bootstrap-timepicker so it validates when using drop-down menu */ 
+					$form.on( "change", "input[type=date], input[type=file], select, div.bootstrap-timepicker > input", function() {
 						$form.validate().element( this );
 					} );
+
 
 					// Clear the form and remove error messages on reset
 					$document.on( "click vclick touchstart", selector + " input[type=reset]", function( event ) {
@@ -13310,10 +13314,12 @@ var componentName = "wb-steps",
 					buttonGroupClassList = buttonGroup.classList,
 					divClassList = div.classList;
 
-				buttonGroupClassList.add( "buttons" );
+				//buttonGroupClassList.add( "buttons" );
+				buttonGroupClassList.add( "buttons", "mrgn-tp-lg", "col-xs-12" );
 				fieldset.parentNode.insertBefore( wrapper, fieldset );
 				wrapper.appendChild( fieldset );
 				wrapper.classList.add( "steps-wrapper" );
+				wrapper.classList.add( "row" );
 
 				if ( div && div.tagName === "DIV" ) {
 					var btnClone;
@@ -13368,7 +13374,7 @@ var componentName = "wb-steps",
 		var control = document.createElement( "BUTTON" );
 
 		// set default attributes
-		control.className = ( type === "prev" ? "btn btn-md btn-default" : "btn btn-md btn-primary" ) + " " + style;
+		control.className = ( type === "prev" ? "btn btn-lg btn-default col-sm-4" : "btn btn-lg btn-primary col-sm-4" ) + " " + style;
 		control.innerHTML = text;
 
 		return control;
@@ -15780,6 +15786,13 @@ var $document = wb.doc,
 				$buttons.removeAttr( attrEngaged );
 				$( this ).attr( attrEngaged, "" );
 			} );
+
+			// click on preview btn
+			$('#preview-btn').click( function() {
+				e.preventDefault();
+				console.log('notice me');
+				$('form').validator;
+			});
 
 			elm.addEventListener( "submit", function( e ) {
 

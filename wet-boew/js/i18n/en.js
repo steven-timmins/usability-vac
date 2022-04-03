@@ -104,7 +104,7 @@ wb.i18nDict = {
 	"shr-disc": "No endorsement of any products or services is expressed or implied.",
 
 	/* Form validation */
-	"frm-nosubmit": "The form could not be submitted because ",
+	"frm-nosubmit": "The form could not continue because ",
 	"errs-fnd": " errors were found.",
 	"err-fnd": " error was found.",
 	"err-correct": "(Correct and resubmit)",
